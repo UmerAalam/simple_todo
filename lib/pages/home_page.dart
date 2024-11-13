@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:simple_todo/utils/alert_box.dart';
 import 'package:simple_todo/utils/todo_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,13 +19,21 @@ class _HomePageState extends State<HomePage> {
     ],
     [
       "Make a yt channel",
-      false,
+      false
     ]
   ];
   void checkBoxChanged(bool? value, int index) {
     setState(() {
       todolist[index][1] = !todolist[index][1];
     });
+  }
+
+  void createNewTask() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return ShowDialogBox();
+        });
   }
 
   @override
@@ -42,7 +51,16 @@ class _HomePageState extends State<HomePage> {
         ),
         centerTitle: true,
       ),
-      backgroundColor: Colors.white,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          createNewTask();
+        },
+        child: Icon(
+          Icons.add,
+          color: Colors.blue[900],
+        ),
+      ),
+      backgroundColor: Colors.blue[100],
       body: ListView.builder(
         itemCount: todolist.length,
         itemBuilder: (context, index) {
