@@ -31,18 +31,18 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.blue,
         title: Text(
           "To Do",
           style: TextStyle(
-            color: Colors.grey[800],
+            color: Colors.white,
             fontSize: 25,
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
       ),
-      backgroundColor: Colors.yellow[200],
+      backgroundColor: Colors.white,
       body: ListView.builder(
         itemCount: todolist.length,
         itemBuilder: (context, index) {
