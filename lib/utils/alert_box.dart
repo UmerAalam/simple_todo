@@ -1,10 +1,18 @@
-// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, prefer_const_literals_to_create_immutables
-
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:simple_todo/utils/my_button.dart';
 
 class ShowDialogBox extends StatelessWidget {
-  const ShowDialogBox({super.key});
+  final controller;
+
+  VoidCallback onSave;
+  VoidCallback onCancel;
+  ShowDialogBox({
+    super.key,
+    this.controller,
+    required this.onSave,
+    required this.onCancel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +24,7 @@ class ShowDialogBox extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 15, left: 15, top: 15),
               child: TextField(
+                controller: controller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Add a new task',
@@ -32,11 +41,11 @@ class ShowDialogBox extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                MyButton(text: "Save", onPressed: () {}),
+                MyButton(text: "Save", onPressed: onSave),
                 SizedBox(
                   width: 10,
                 ),
-                MyButton(text: "Cancel", onPressed: () {}),
+                MyButton(text: "Cancel", onPressed: onCancel),
               ],
             ),
           ],
