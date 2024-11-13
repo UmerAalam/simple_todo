@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:simple_todo/utils/my_button.dart';
 
 class ShowDialogBox extends StatelessWidget {
   const ShowDialogBox({super.key});
@@ -24,7 +25,20 @@ class ShowDialogBox extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                MyButton(text: "Save", onPressed: () {}),
+                SizedBox(
+                  width: 10,
+                ),
+                MyButton(text: "Cancel", onPressed: () {}),
+              ],
+            ),
           ],
         ),
       ),
